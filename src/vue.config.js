@@ -1,5 +1,7 @@
 module.export = {
-    baseUrl: '/api',
+    baseUrl: process.env.NODE_ENV === 'production'
+        ? '/'
+        : '/',
     devServer: {
         proxy: {
             '/api': {
