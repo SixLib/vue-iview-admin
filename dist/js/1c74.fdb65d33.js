@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["1c74"],{"1c74":function(t,e,n){"use strict";n.r(e);var c=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("h1",[t._v("Documentation")])},i=[],a={props:["breadcrums","active","tag"],created:function(){this.$emit("changeProps",this.breadcrums,this.active,this.tag)}},s=a,o=n("3b17"),r=Object(o["a"])(s,c,i,!1,null,null,null);r.options.__file="documentation.vue";e["default"]=r.exports}}]);
+//# sourceMappingURL=1c74.fdb65d33.js.map
