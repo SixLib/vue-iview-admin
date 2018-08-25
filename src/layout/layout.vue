@@ -32,8 +32,8 @@
                       </Col>
                     </Row>
                 </Header>
-                   
-               <Content :style="{margin: '20px', background: '#fff'}">
+                   <tags :tags="tags"/>
+               <Content :style="{margin: '2px', background: '#fff'}">
                     <router-view v-on:changeProps="listenChangeProps"></router-view>
                 </Content>
             </Layout>
@@ -41,8 +41,12 @@
     </div>
 </template>
 <script>
-import './layout.css'
+import "./layout.css";
+import tags from "../components/tags.vue";
 export default {
+  components: {
+    tags
+  },
   data() {
     return {
       isCollapsed: false,
@@ -61,9 +65,19 @@ export default {
     }
   },
   methods: {
-    listenChangeProps(breadcrumArr, activeStr) {
+    listenChangeProps(breadcrumArr, activeStr, tag) {
       this.active = activeStr;
       this.breadcrums = breadcrumArr;
+      if (this.tags.indexOf(tag) === -1) {
+        this.tags.push(tag);
+      }
+      this.tags.forEach(function(o) {
+        if (o != tag) {
+          o.isOn = false;
+        } else {
+          o.isOn = true;
+        }
+      });
     },
     tabsClick(router) {
       this.$router.push({ path: router });

@@ -4,12 +4,12 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export const router = new Router({
-    mode: 'history',
+    // mode: 'history',
     scrollBehavior: () => ({ y: 0 }),
     routes: [
         {
             path: '/login',
-            component: () => import('@/views/login'),
+            component: () => import('@/views/Login/login'),
             meta: { title: '登录' },
             hidden: true
         },
@@ -31,7 +31,12 @@ export const router = new Router({
                                 level: 1,
                                 router: ""
                             }
-                        ]
+                        ],
+                        tag: {
+                            value: "首页",
+                            isOn: false,
+                            router: "/"
+                        }
                     }
                 },
                 {
@@ -47,7 +52,14 @@ export const router = new Router({
                                 level: 1,
                                 router: ""
                             }
-                        ]
+                        ],
+                        tag: {
+                            value: "文档",
+                            isOn: false,
+                            router: "/documentation"
+
+                        }
+
                     }
                 }
             ]

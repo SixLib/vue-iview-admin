@@ -3,9 +3,9 @@
 </template>
 <script>
 export default {
-  props: ["breadcrums", "active"],
+  props: ["breadcrums", "active","tag"],
   created() {
-    this.$emit("changeProps", this.breadcrums, this.active);
+    this.$emit("changeProps", this.breadcrums, this.active,this.tag);
   }
 };
 </script>
