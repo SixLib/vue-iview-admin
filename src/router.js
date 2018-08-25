@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export const router = new Router({
-    // mode: 'history',
+    mode: 'history',
     scrollBehavior: () => ({ y: 0 }),
     routes: [
         {
