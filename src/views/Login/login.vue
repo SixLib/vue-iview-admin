@@ -4,12 +4,12 @@
         <Col span="8">
             <Form ref="formInline" :model="formInline" :rules="ruleInline">
                 <FormItem prop="loginname">
-                    <Input type="text" v-model="formInline.loginname" placeholder="Username">
+                    <Input type="text" v-model="formInline.loginname" placeholder="Username" @keyup.enter.native="handleSubmit('formInline')" autofocus>
                         <Icon type="ios-person-outline" slot="prepend"></Icon>
                     </Input>
                 </FormItem>
                 <FormItem prop="password">
-                    <Input type="password" v-model="formInline.password" placeholder="Password">
+                    <Input type="password" v-model="formInline.password" placeholder="Password" @keyup.enter.native="handleSubmit('formInline')">
                         <Icon type="ios-lock-outline" slot="prepend"></Icon>
                     </Input>
                 </FormItem>
