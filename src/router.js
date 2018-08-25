@@ -19,8 +19,8 @@ export const router = new Router({
             redirect: 'dashboard',
             children: [
                 {
-                    path: 'dashboard',
-                    component: () => import('@/views/index'),
+                    path: '/dashboard',
+                    component: () => import('@/views/dashboard/index'),
                     name: 'Dashboard',
                     meta: { title: '首页', icon: 'dashboard', noCache: true },
                     props: {
