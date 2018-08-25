@@ -1,11 +1,11 @@
-module.export = {
+module.exports = {
     baseUrl: process.env.NODE_ENV === 'production'
-        ? '/'
-        : '/',
-    devServer: {
+    ? '/'
+    : '/',
+devServer: {
         proxy: {
             '/api': {
-                target: 'http://121.42.186.91:8090/api/',
+                target: 'http://localhost:8090',
                 changeOrigin: true
             }
         }

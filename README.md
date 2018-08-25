@@ -1,11 +1,11 @@
-# vue-admin
+# vue-iview-admin
 
-## Project setup
+## 初始化模块
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 本地调试启动
 ```
 npm run serve
 ```

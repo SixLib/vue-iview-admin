@@ -32,7 +32,7 @@
                       </Col>
                     </Row>
                 </Header>
-                   <tags :tags="tags"/>
+                   <!-- <tags :tags="tags"/> -->
                <Content :style="{margin: '2px', background: '#fff'}">
                     <router-view v-on:changeProps="listenChangeProps"></router-view>
                 </Content>

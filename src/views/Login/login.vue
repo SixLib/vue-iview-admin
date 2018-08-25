@@ -3,8 +3,8 @@
         <Col span="8">&nbsp;</Col>
         <Col span="8">
             <Form ref="formInline" :model="formInline" :rules="ruleInline">
-                <FormItem prop="user">
-                    <Input type="text" v-model="formInline.user" placeholder="Username">
+                <FormItem prop="loginname">
+                    <Input type="text" v-model="formInline.loginname" placeholder="Username">
                         <Icon type="ios-person-outline" slot="prepend"></Icon>
                     </Input>
                 </FormItem>
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       formInline: {
-        user: "admin",
+        loginname: "admin",
         password: "123456"
       },
       ruleInline: {
@@ -58,9 +58,13 @@ export default {
     handleSubmit(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
-          this.$store.dispatch("Login", this.formInline).then(() => {
-            this.$Message.success("Success!");
-            this.$router.push({ path: "/" });
+          this.$store.dispatch("Login", this.formInline).then(state => {
+            if (state) {
+              this.$Message.success("登录成功!");
+              this.$router.push({ path: "/" });
+            } else {
+              this.$Message.error("用户名或密码不正确!");
+            }
           });
         } else {
           this.$Message.error("Fail!");
