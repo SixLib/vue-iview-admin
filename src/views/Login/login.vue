@@ -54,6 +54,12 @@ export default {
       }
     };
   },
+  created() {
+    this.$Loading.start();
+  },
+  mounted() {
+    this.$Loading.finish();
+  },
   methods: {
     handleSubmit(name) {
       this.$refs[name].validate(valid => {

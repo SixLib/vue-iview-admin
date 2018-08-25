@@ -3,9 +3,13 @@
 </template>
 <script>
 export default {
-  props: ["breadcrums", "active","tag"],
+  props: ["breadcrums", "active", "tag"],
   created() {
-    this.$emit("changeProps", this.breadcrums, this.active,this.tag);
+    this.$Loading.start();
+    this.$emit("changeProps", this.breadcrums, this.active, this.tag);
+  },
+  mounted() {
+    this.$Loading.finish();
   }
 };
 </script>
