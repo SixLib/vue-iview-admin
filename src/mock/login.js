@@ -1,3 +1,4 @@
+import _ from "lodash";
 const userMap = [
   {
     accountName: "admin",
@@ -8,7 +9,7 @@ export default {
   loginByLoginname: config => {
     const user = JSON.parse(config.body);
     if (
-      userMap.indexOf({
+      _.find(userMap, {
         accountName: user.loginname,
         password: user.password
       })

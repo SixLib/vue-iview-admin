@@ -1,25 +1,22 @@
 <template>
-    <Row>
-        <Col span="8">&nbsp;</Col>
-        <Col span="8">
-            <Form ref="formInline" :model="formInline" :rules="ruleInline">
-                <FormItem prop="loginname">
-                    <Input type="text" v-model="formInline.loginname" placeholder="Username" @keyup.enter.native="handleSubmit('formInline')" autofocus>
-                        <Icon type="ios-person-outline" slot="prepend"></Icon>
-                    </Input>
-                </FormItem>
-                <FormItem prop="password">
-                    <Input type="password" v-model="formInline.password" placeholder="Password" @keyup.enter.native="handleSubmit('formInline')">
-                        <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                    </Input>
-                </FormItem>
-                <FormItem>
-                    <Button type="primary" @click="handleSubmit('formInline')" long>Signin</Button>
-                </FormItem>
-            </Form>
-        </Col>
-        <Col span="8">&nbsp;</Col>
-    </Row>
+<Card style="margin:120px auto;width:520px;" dis-hover>
+  <span slot="title">登录</span>
+  <Form ref="formInline" :model="formInline" :rules="ruleInline">
+      <FormItem prop="loginname">
+          <Input type="text" size="large" v-model="formInline.loginname" placeholder="Username" @keyup.enter.native="handleSubmit('formInline')" autofocus>
+              <Icon type="ios-person-outline" slot="prepend"></Icon>
+          </Input>
+      </FormItem>
+      <FormItem prop="password">
+          <Input type="password" size="large" v-model="formInline.password" placeholder="Password" @keyup.enter.native="handleSubmit('formInline')">
+              <Icon type="ios-lock-outline" slot="prepend"></Icon>
+          </Input>
+      </FormItem>
+      <FormItem>
+          <Button type="primary" @click="handleSubmit('formInline')" long>Signin</Button>
+      </FormItem>
+  </Form>
+  </Card>
 </template>
 
 <script>
