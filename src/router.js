@@ -41,7 +41,7 @@ export const router = new Router({
                 },
                 {
                     path: 'documentation',
-                    component: () => import('@/views/documentation'),
+                    component: () => import('@/views/documentation/index'),
                     name: 'Documentation',
                     meta: { title: '文档', icon: 'documentation', noCache: true },
                     props: {

@@ -7,5 +7,15 @@ module.exports = {
         changeOrigin: true
       }
     }
+  },
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.md$/,
+          loader: "text-loader"
+        }
+      ]
+    }
   }
 };
