@@ -1,5 +1,5 @@
 <template>
-    <div id="echart-line" style="float:left;height:400px;white-space:nowrap"></div>
+    <div id="echart-line" style="height:400px;"></div>
 </template>
 <script>
 import Echarts from "echarts";
@@ -7,11 +7,11 @@ export default {
   mounted() {
     var lineChart = Echarts.init(document.getElementById("echart-line"));
     window.onresize = lineChart.resize;
-    this.$store.dispatch("getEchartsData", "line", "line").then(data => {
+    this.$store.dispatch("getEchartsData", "line", "line").then(() => {
       // 绘制图表
       lineChart.setOption({
         legend: {
-          data: data.legend.data
+          data: this.$store.getters.echartsLineData.legend.data
         },
         tooltip: {
           trigger: "axis",
@@ -31,7 +31,7 @@ export default {
         xAxis: {
           type: "category",
           boundaryGap: false,
-          data: data.xAxis.data
+          data: this.$store.getters.echartsLineData.xAxis.data
         },
         // 声明一个 Y 轴，数值轴。
         yAxis: [
@@ -39,7 +39,7 @@ export default {
             type: "value"
           }
         ],
-        series: data.series.map(function(s) {
+        series: this.$store.getters.echartsLineData.series.map(function(s) {
           s.type = "line";
           s.areaStyle = { normal: {} };
           s.label = {
