@@ -11,7 +11,7 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("Logout").then(() => {
-        this.$router.push({ path: "login" });
+        this.$router.push({ path: "/" });
       });
     }
   }
