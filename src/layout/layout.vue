@@ -15,22 +15,7 @@
             </Sider>
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
-                    <Row type="flex" justify="end" class="code-row-bg">
-                      <Col span="23">
-                        <Breadcrumb>
-                          <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon>
-                          <BreadcrumbItem v-for="item in breadcrums" :key="item.level" :to="item.router">{{item.value}}</BreadcrumbItem>
-                        </Breadcrumb>
-                      </Col>
-                      <Col span="1">
-                      <Dropdown>
-                        <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
-                        <DropdownMenu slot="list">
-                            <DropdownItem><a @click="logout">注销</a></DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
-                      </Col>
-                    </Row>
+                  <i-Header :breadcrumbs="breadcrumbs" :isCollapsed="isCollapsed" v-on:changeProps="listenChangeHeaderProps"/>
                 </Header>
                    <!-- <tags :tags="tags"/> -->
                <Content :style="{margin: '2px', background: '#fff'}">
@@ -42,32 +27,34 @@
 </template>
 <script>
 import "./layout.css";
-import tags from "../components/tags.vue";
+import header from "./components/header.vue";
+import tags from "./components/tags.vue";
 export default {
   components: {
+    "i-Header": header,
     tags
   },
   data() {
     return {
       isCollapsed: false,
       active: "",
-      breadcrums: [],
+      breadcrumbs: [],
       tags: [],
       tabsVal: ""
     };
   },
   computed: {
-    rotateIcon() {
-      return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
-    },
     menuitemClasses() {
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
   },
   methods: {
+    listenChangeHeaderProps() {
+      this.$refs.side1.toggleCollapse();
+    },
     listenChangeProps(breadcrumArr, activeStr, tag) {
       this.active = activeStr;
-      this.breadcrums = breadcrumArr;
+      this.breadcrumbs = breadcrumArr;
       if (this.tags.indexOf(tag) === -1) {
         this.tags.push(tag);
       }
@@ -77,17 +64,6 @@ export default {
         } else {
           o.isOn = true;
         }
-      });
-    },
-    tabsClick(router) {
-      this.$router.push({ path: router });
-    },
-    collapsedSider() {
-      this.$refs.side1.toggleCollapse();
-    },
-    logout() {
-      this.$store.dispatch("Logout").then(() => {
-        this.$router.push({ path: "login" });
       });
     }
   }
